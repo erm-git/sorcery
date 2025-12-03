@@ -41,6 +41,6 @@
 #ifdef __clang__
 #pragma GCC diagnostic ignored "-Wunqualified-std-cast-call"
 #endif
-#include "simpleini/SimpleIni.h"
+#include <SimpleIni.h>
 #include <jsoncpp/json/json.h>
 #pragma GCC diagnostic pop

@@ -85,7 +85,11 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 	${GLUT_INCLUDE_DIRS}
 	${CMAKE_SOURCE_DIR}/ext
 	${CMAKE_SOURCE_DIR}/ext/imgui
-	${CMAKE_SOURCE_DIR}/inc)
+	${CMAKE_SOURCE_DIR}/inc
+	${CMAKE_SOURCE_DIR}/inc/3rdparty
+	${CMAKE_SOURCE_DIR}/inc/3rdparty/cereal/include
+	${CMAKE_SOURCE_DIR}/inc/3rdparty/magic_enum/include
+	${CMAKE_SOURCE_DIR}/inc/3rdparty/simpleini)
 
 # Compiler Options
 target_compile_options(${PROJECT_NAME} PRIVATE

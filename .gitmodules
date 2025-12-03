@@ -10,3 +10,12 @@
 [submodule "ext/imgui_sugar"]
 	path = ext/imgui_sugar
 	url = https://github.com/mnesarco/imgui_sugar
+[submodule "inc/3rdparty/cereal"]
+	path = inc/3rdparty/cereal
+	url = https://github.com/USCiLab/cereal
+[submodule "inc/3rdparty/magic_enum"]
+	path = inc/3rdparty/magic_enum
+	url = https://github.com/Neargye/magic_enum
+[submodule "inc/3rdparty/simpleini"]
+	path = inc/3rdparty/simpleini
+	url = https://github.com/brofield/simpleini
