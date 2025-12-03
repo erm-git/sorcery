@@ -1,0 +1,12 @@
+[submodule "ext/imgui"]
+	path = ext/imgui
+	url = https://github.com/ocornut/imgui
+[submodule "ext/imgui_spinner"]
+	path = ext/imgui_spinner
+	url = https://github.com/dalerank/imspinner
+[submodule "ext/imgui_toggle"]
+	path = ext/imgui_toggle
+	url = https://github.com/cmdwtf/imgui_toggle
+[submodule "ext/imgui_sugar"]
+	path = ext/imgui_sugar
+	url = https://github.com/mnesarco/imgui_sugar

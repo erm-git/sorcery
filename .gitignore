@@ -30,7 +30,6 @@
 *.exe
 *.out
 *.app
-ext
 collateral
 
 # Binaries
