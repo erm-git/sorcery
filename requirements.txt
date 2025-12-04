@@ -1,0 +1,20 @@
+# Sorcery Linux Runtime Dependencies
+libsdl2-2.0-0
+libopengl0
+libjsoncpp26
+libuuid1
+libsqlite3-0
+libavformat61
+libavcodec61
+libswscale8
+libavutil59
+libasound2
+libpulse0
+libsamplerate0
+libx11-6
+libxext6
+libxcursor1
+libxi6
+libxfixes3
+libxrandr2
+libxss1

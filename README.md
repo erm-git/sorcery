@@ -62,9 +62,49 @@ Initially I am planning to remake Wizardry 1, then adding 2 and 3, and then subs
 
 I'm currently developing solely on Linux (Ubuntu 24) so compilation instructions are currently Linux-specific. Windows instructions and releases will of course be supported at a later date.
 
-Full compliation instructions for Linux are in the doc/COMPILE text file, but in brief both CMake (via VSCode CMake Tools) and Code::Blocks are supported once the various support libraries are installed. C++23 compiler support is required (I'm currently using GCC 14.2).
+Full compilation instructions for Linux are in the [doc/COMPILE](/doc/COMPILE) file. C++23 compiler support is required (currently using GCC 14.2).
 
-All code is released under the GPL - see the doc/LICENSE text file for full details.
+### Quick Build (Ubuntu 24.04)
+
+```bash
+# Install build dependencies
+sudo apt install build-essential cmake pkg-config git \
+    libsdl2-dev libsdl2-image-dev libglew-dev libgl1-mesa-dev \
+    libglm-dev libjsoncpp-dev libsqlite3-dev libfmt-dev uuid-dev \
+    libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev \
+    libswscale-dev libswresample-dev libavutil-dev
+
+# Clone ImGui and addons (not included in repo)
+mkdir -p ext
+git clone --depth 1 https://github.com/ocornut/imgui ext/imgui
+git clone --depth 1 https://github.com/cfillion/imgui-toggle ext/imgui_toggle
+git clone --depth 1 https://github.com/Flix01/imgui_sugar ext/imgui_sugar
+git clone --depth 1 https://github.com/dalerank/imspinner ext/imgui_spinner
+
+# Download stb_image header
+mkdir -p ext/stb
+wget -O ext/stb/stb_image.h https://raw.githubusercontent.com/nothings/stb/master/stb_image.h
+
+# Build
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+
+# Binary is at: build/sorcery
+```
+
+### Runtime Dependencies
+
+To run the game on another Linux system, install these runtime packages:
+
+```bash
+sudo apt install libsdl2-2.0-0 libglew2.2 libgl1 libjsoncpp25 \
+    libsqlite3-0 libfmt9 uuid-runtime \
+    libavcodec60 libavformat60 libavutil58 libswscale7 libswresample4
+```
+
+Then copy the `build/sorcery` binary along with the `cfg/`, `dat/`, `gfx/`, `vfx/`, and `doc/` directories to the target system.
+
+All code is released under the GPL - see the [doc/LICENSE](/doc/LICENSE) file for full details.
 
 ## Contact and Help
 

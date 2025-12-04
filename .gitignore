@@ -1,3 +1,19 @@
+# Build directories
+build/
+bin/
+obj/
+dist/
+.debris/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+CPackConfig.cmake
+CPackSourceConfig.cmake
+install_manifest.txt
+compile_commands.json
+
 # Prerequisites
 *.d
 
@@ -30,23 +46,39 @@
 *.exe
 *.out
 *.app
+sorcery
 collateral
 
-# Binaries
-bin/*
-build/*
-obj/*
-.debris/*
+# Third-party libraries (cloned at build time)
+ext/imgui/
+ext/imgui_toggle/
+ext/imgui_sugar/
+ext/imgui_spinner/
+ext/stb/
+
+# IDE files
+.vscode/
+.vs/
+*.cbp
+*.layout
+*.depend
+*.user
+*.suo
+*.sln
+*.vcxproj*
 
 # Temporary Files
 *.swp
+*.tmp
+*.bak
+*~
 
-bin/Debug/sorcery-sfml
-bin/Debug/dat/strings.json
+# Profiler data
 profiler_analysis.stats
-CMakeFiles
-CMakeCache.txt
-cmake_install.cmake
-CPackConfig.cmake
-CPackSourceConfig.cmake
-sorcery
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# ImGui state files
+imgui.ini

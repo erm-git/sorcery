@@ -65,6 +65,9 @@ target_compile_options(dear_imgui PRIVATE
 	-Wno-suggest-attribute=format
 )
 
+# Enable STB_TRUETYPE for font loading (used by fontstore.cpp)
+target_compile_definitions(dear_imgui PRIVATE IMGUI_ENABLE_STB_TRUETYPE)
+
 # Main Source Files
 include(src/core/CMakeLists.txt)
 include(src/engine/CMakeLists.txt)
@@ -89,7 +92,8 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 	${CMAKE_SOURCE_DIR}/inc/3rdparty
 	${CMAKE_SOURCE_DIR}/inc/3rdparty/cereal/include
 	${CMAKE_SOURCE_DIR}/inc/3rdparty/magic_enum/include
-	${CMAKE_SOURCE_DIR}/inc/3rdparty/simpleini)
+	${CMAKE_SOURCE_DIR}/inc/3rdparty/simpleini
+	${CMAKE_SOURCE_DIR}/inc/3rdparty/sqlite_modern_cpp/hdr)
 
 # Compiler Options
 target_compile_options(${PROJECT_NAME} PRIVATE

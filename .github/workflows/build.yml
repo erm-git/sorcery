@@ -1,0 +1,49 @@
+name: Build and Test
+
+on:
+  push:
+    branches: [ main, sdl/imgui ]
+  pull_request:
+    branches: [ main, sdl/imgui ]
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+    
+    - name: Install dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y build-essential cmake pkg-config \
+          libsdl2-dev libsdl2-image-dev libglew-dev libgl1-mesa-dev \
+          libglm-dev libjsoncpp-dev libsqlite3-dev libfmt-dev uuid-dev \
+          libavcodec-dev libavformat-dev libavdevice-dev libavfilter-dev \
+          libswscale-dev libswresample-dev libavutil-dev
+    
+    - name: Clone ImGui dependencies
+      run: |
+        mkdir -p ext
+        git clone --depth 1 https://github.com/ocornut/imgui ext/imgui
+        git clone --depth 1 https://github.com/cfillion/imgui-toggle ext/imgui_toggle
+        git clone --depth 1 https://github.com/Flix01/imgui_sugar ext/imgui_sugar
+        git clone --depth 1 https://github.com/dalerank/imspinner ext/imgui_spinner
+    
+    - name: Download stb_image
+      run: |
+        mkdir -p ext/stb
+        wget -O ext/stb/stb_image.h https://raw.githubusercontent.com/nothings/stb/master/stb_image.h
+    
+    - name: Configure CMake
+      run: cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+    
+    - name: Build
+      run: cmake --build build -j$(nproc)
+    
+    - name: Check binary
+      run: |
+        file build/sorcery
+        ldd build/sorcery

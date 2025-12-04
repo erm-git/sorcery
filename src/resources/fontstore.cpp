@@ -22,13 +22,7 @@
 
 #include "resources/fontstore.hpp"
 #include "core/system.hpp"
-
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wswitch-default"
-#pragma GCC diagnostic ignored "-Wmissing-declarations"
-#define STB_TRUETYPE_IMPLEMENTATION
-#include "stb/stb_truetype.h"
-#pragma GCC diagnostic pop
+#include "resources/stbtt_helper.hpp"
 
 Sorcery::FontStore::FontStore(System *system, ImGuiIO &io)
 	: _system(system),

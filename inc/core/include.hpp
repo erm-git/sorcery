@@ -42,5 +42,5 @@
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #include "sqlite3.h"
-#include "sqlite_modern_cpp/sqlite_modern_cpp.h"
+#include "sqlite_modern_cpp.h"
 #pragma GCC diagnostic pop

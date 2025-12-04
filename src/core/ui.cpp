@@ -610,7 +610,7 @@ auto Sorcery::UI::display_engine(Game *game) -> void {
 	_draw_cursor();
 
 	bool show{true};
-	ImGui::SetCurrentFont(fontstore->get_default_font());
+	ImGui::PushFont(fontstore->get_default_font());
 	ImGui::ShowDemoWindow(&show);
 
 	// And finally clear and render everything
@@ -819,7 +819,8 @@ auto Sorcery::UI::_draw_fg_image_with_idx(std::string_view layer,
 		auto src_image{images->get(std::string{source})};
 		ImVec4 tint_col{
 			ImVec4(tint.x, tint.y, tint.z, _system->animation->fade)};
-		ImGui::Image((intptr_t)src_image.texture, p_sz, uv_0, uv_1, tint_col);
+		ImGui::Image((intptr_t)src_image.texture, p_sz, uv_0, uv_1, tint_col,
+					 ImVec4{0.0f, 0.0f, 0.0f, 0.0f});
 	}
 }
 
@@ -901,7 +902,8 @@ auto Sorcery::UI::_draw_fg_image(Component *component) -> void {
 			ImGui::Image(src_image.texture,
 						 ImVec2{static_cast<float>(resized.w),
 								static_cast<float>(resized.h)},
-						 ImVec2{0.0f, 0.0f}, ImVec2{1.0f, 1.0f}, tint_col);
+						 ImVec2{0.0f, 0.0f}, ImVec2{1.0f, 1.0f}, tint_col,
+						 ImVec4{0.0f, 0.0f, 0.0f, 0.0f});
 		}
 	}
 }
@@ -938,7 +940,9 @@ auto Sorcery::UI::_draw_bg_image(Component *component) -> void {
 					ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoInputs) {
 			ImGui::SetCursorPos(ImVec2{0, 0});
 			ImGui::Image((intptr_t)src_image.texture, viewport->Size,
-						 ImVec2{0.0f, 0.0f}, ImVec2{1.0f, 1.0f});
+						 ImVec2{0.0f, 0.0f}, ImVec2{1.0f, 1.0f},
+						 ImVec4{1.0f, 1.0f, 1.0f, 1.0f},
+						 ImVec4{0.0f, 0.0f, 0.0f, 0.0f});
 		}
 	}
 }
@@ -3582,7 +3586,7 @@ auto Sorcery::UI::_display_main_menu() -> void {
 	_draw_cursor();
 
 	bool show = true;
-	ImGui::SetCurrentFont(fontstore->get_default_font());
+	ImGui::PushFont(fontstore->get_default_font());
 	ImGui::ShowDemoWindow(&show);
 
 	ImGui::SetNextWindowPos(ImVec2{1, 1});
